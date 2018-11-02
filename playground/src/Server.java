@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.net.SocketAddress;
 
 public class Server {
-
 	public void start(InetAddress ipAddress, int port) throws IOException
     {
 		ServerSocket serverSocket = null;
