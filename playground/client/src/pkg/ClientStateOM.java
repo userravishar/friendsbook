@@ -10,6 +10,30 @@ public class ClientStateOM implements Serializable {
 		this.freeMemory = freeMemory;
 		this.clientIdentifier = clientId;
 	}
+	
+	public boolean equals(Object other)
+	{
+		if (other == this)
+		{
+			return true;
+		}
+		
+		if (!(other instanceof ClientStateOM))
+		{
+			return false;
+		}
+		
+		ClientStateOM otherAsCsom = (ClientStateOM)other;		
+		return this.cpu == otherAsCsom.cpu &&
+				this.freeMemory == otherAsCsom.freeMemory &&
+				this.clientIdentifier == otherAsCsom.clientIdentifier;
+	}
+	
+	public int hashCode()
+	{
+		String serialized = "cpu" + cpu + "freeMemory" + freeMemory + "clientId" + clientIdentifier;
+		return serialized.hashCode();
+	}
 
 	public double cpu;
 	public long freeMemory;
