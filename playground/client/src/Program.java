@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Program {
 	
-	// Represents portNumber of the client.
+	// Represents port number of the client.
 	private static int portNumber;
 	
 	public static void main(String[] args) throws IOException {
@@ -31,13 +31,9 @@ public class Program {
 		// Every 5 secs send client state to the controller.
 		scheduledService.scheduleAtFixedRate(()->
 		{
-			try 
+			try
 			{
-				state.SendToController(portNumber, cpuMonitor);					
-			}
-			catch (UnknownHostException e)
-			{
-				e.printStackTrace();					
+				state.SendToController(portNumber, cpuMonitor);
 			}
 			catch (IOException e)
 			{

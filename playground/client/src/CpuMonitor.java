@@ -4,7 +4,7 @@ import com.sun.management.OperatingSystemMXBean;
 
 public class CpuMonitor { 
     private int  availableProcessors = ManagementFactory.getOperatingSystemMXBean().getAvailableProcessors();
-    private long lastSystemTime      = 0;
+    private long lastSystemTime = 0;
     private long lastProcessCpuTime  = 0;
 
     public synchronized double getCpuUsage()
