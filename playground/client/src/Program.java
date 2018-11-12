@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -8,6 +7,9 @@ public class Program {
 	
 	// Represents port number of the client.
 	private static int portNumber;
+	
+	// Frequency at which client communicates its state to the Server.
+	static int UpdateStateFrequencyInSecs = 1;
 	
 	public static void main(String[] args) throws IOException {
 		if (args.length != 1)
@@ -28,7 +30,7 @@ public class Program {
 		SystemState state = new SystemState();
 		CpuMonitor cpuMonitor = new CpuMonitor();
 		
-		// Every 5 secs send client state to the controller.
+		// Every UpdateStateFrequencyInSecs secs send client state to the controller.
 		scheduledService.scheduleAtFixedRate(()->
 		{
 			try
@@ -39,7 +41,7 @@ public class Program {
 			{
 				e.printStackTrace();
 			}
-		}, 0, 5, TimeUnit.SECONDS);
+		}, 0, UpdateStateFrequencyInSecs, TimeUnit.SECONDS);
 
 		while (true)
 		{
