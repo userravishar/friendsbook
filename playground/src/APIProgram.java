@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 
-public class Program {
+public class APIProgram {
 	private static int port = 5001;
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException 

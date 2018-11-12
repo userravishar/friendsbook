@@ -34,6 +34,12 @@ public class ClientStateOM implements Serializable {
 		String serialized = "cpu" + cpu + "freeMemory" + freeMemory + "clientId" + clientIdentifier;
 		return serialized.hashCode();
 	}
+	
+	public String toString()
+	{
+		String serialized = "cpu" + cpu + "freeMemory" + freeMemory + "clientId" + clientIdentifier;
+		return serialized;
+	}
 
 	public double cpu;
 	public long freeMemory;

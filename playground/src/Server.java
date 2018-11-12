@@ -29,6 +29,8 @@ public class Server {
 	public void start(InetAddress ipAddress, int port) throws IOException, ClassNotFoundException
     {
 		ServerSocket serverSocket = null;
+        APIServerWorker serverWorker = null;
+        
 		try
 		{
 			serverSocket = new ServerSocket(port);
@@ -39,6 +41,11 @@ public class Server {
 			return;
 		}
 		
+        // Create Worker thread, pass shared data
+        serverWorker = new APIServerWorker(clientStates, isDirty);
+        serverWorker.start();
+
+
 		ExecutorService executor = Executors.newFixedThreadPool(MaxThreads);
 
         while (true)
